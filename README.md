@@ -1,51 +1,54 @@
-# Welcome to your Convex + Next.js + Clerk app
+# Receipt Tracker AI
 
-This is a [Convex](https://convex.dev/) project created with [`npm create convex`](https://www.npmjs.com/package/create-convex).
+Receipt Tracker AI is an intelligent expense management platform that uses advanced AI to scan, analyze, and organize your receipts. Instantly extract key data from PDF receipts, categorize expenses, and gain actionable insights—all with a modern, user-friendly interface.
 
-After the initial setup (<2 minutes) you'll have a working full-stack app using:
 
-- Convex as your backend (database, server logic)
-- [React](https://react.dev/) as your frontend (web page interactivity)
-- [Next.js](https://nextjs.org/) for optimized web hosting and page routing
-- [Tailwind](https://tailwindcss.com/) for building great looking accessible UI
-- [Clerk](https://clerk.com/) for authentication
+## Features
 
-## Get started
+- **AI-Powered Receipt Scanning** – Drag and drop PDF receipts for instant data extraction using state-of-the-art AI agents
+- **Expense Categorization** – Automatically tag and organize expenses by merchant, category, and custom tags
+- **AI Summaries** – Get human-readable summaries of each receipt, including merchant, items, and transaction details
+- **Advanced Export** – Export your receipt history and data for accounting or tax purposes
+- **Usage Limits & Subscription Management** – Free and paid tiers with scan limits, managed via Schematic customer portal
+- **Secure Authentication** – User accounts powered by Clerk
+- **Real-Time Updates** – See uploaded receipts and extracted data instantly
 
-If you just cloned this codebase and didn't use `npm create convex`, run:
+## Tech Stack
 
-```
-npm install
-npm run dev
-```
+- **Frontend**: Next.js 15, React 19, TailwindCSS, Radix UI
+- **AI Integration**: Inngest Agent Kit, Anthropic Claude, OpenAI GPT-4o
+- **Authentication**: Clerk
+- **Database**: Convex (with file storage and metadata)
+- **Subscription & Billing**: Schematic
+- **Styling**: Tailwind CSS, Radix UI components
 
-If you're reading this README on GitHub and want to use this template, run:
+## Project Structure
 
-```
-npm create convex@latest -- -t nextjs-clerk
-```
+- `app/` – Next.js app directory (pages, layouts, API routes)
+- `components/` – Reusable UI components (PDFDropzone, ReceiptList, Header, etc.)
+- `convex/` – Convex database schema, queries, mutations, and authentication config
+- `actions/` – Server actions for file upload, access tokens, and business logic
+- `inngest/` – AI agent definitions and orchestration for PDF parsing and data extraction
+- `lib/` – Utility functions (Convex client, Schematic client, etc.)
+- `public/` – Static assets
 
-Then:
+## Data Model
 
-1. Open your app. There should be a "Claim your application" button from Clerk in the bottom right of your app.
-2. Follow the steps to claim your application and link it to this app.
-3. Follow step 3 in the [Convex Clerk onboarding guide](https://docs.convex.dev/auth/clerk#get-started) to create a Convex JWT template.
-4. Uncomment the Clerk provider in `convex/auth.config.ts`
-5. Paste the Issuer URL as `CLERK_JWT_ISSUER_DOMAIN` to your dev deployment environment variable settings on the Convex dashboard (see [docs](https://docs.convex.dev/auth/clerk#configuring-dev-and-prod-instances))
+Receipts are stored with:
 
-If you want to sync Clerk user data via webhooks, check out this [example repo](https://github.com/thomasballinger/convex-clerk-users-table/).
+- User ID (Clerk)
+- File metadata (name, display name, size, MIME type, upload date)
+- AI-extracted fields: merchant name, address, contact, transaction date, amount, currency, itemized purchases, and summary
+- Status (pending, processed, error)
 
-## Learn more
+See [`convex/schema.ts`](convex/schema.ts ) for full schema.
 
-To learn more about developing your project with Convex, check out:
+## Learn More
 
-- The [Tour of Convex](https://docs.convex.dev/get-started) for a thorough introduction to Convex principles.
-- The rest of [Convex docs](https://docs.convex.dev/) to learn about all Convex features.
-- [Stack](https://stack.convex.dev/) for in-depth articles on advanced topics.
+- [Convex Documentation](https://docs.convex.dev/)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Clerk Documentation](https://clerk.com/docs)
+- [Inngest Documentation](https://www.inngest.com/docs/agents)
 
-## Join the community
 
-Join thousands of developers building full-stack apps with Convex:
-
-- Join the [Convex Discord community](https://convex.dev/community) to get help in real-time.
-- Follow [Convex on GitHub](https://github.com/get-convex/), star and contribute to the open-source implementation of Convex.
+**Built for modern expense tracking with AI.**
